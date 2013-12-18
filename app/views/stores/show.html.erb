@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Address:</b>
+   <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@store.latitude}%2C#{@store.longitude}" %>
+</p>
+
+<p>
+  <b>County:</b>
+  <%= @store.county %>
+</p>
+
+<p>
+  <b>phoneNumber:</b>
+  <%= @store.phoneNumber %>
+</p>
+
+
+<p>
+    <% if !@store.products.empty? %>
+	<b>Product for this address <%= @store.address %> </b> <br \>
+	<b>This store currently has: </b> <br \>
+	<% @store.products.each do |m| %>
+		<%= m.details %>
+		<%= m.price %>		
+		<br \>
+	<% end %>
+	<% else %>
+	<b>Would you like to <%= link_to 'Add Products To The Store', orders_path %> </b>
+    <% end %>
+</p>
+
+
+
+
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>

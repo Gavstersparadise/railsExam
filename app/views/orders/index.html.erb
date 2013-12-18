@@ -1,0 +1,41 @@
+<h1>Listing orders</h1>
+
+<table align = left>
+  <tr>
+    <th>Details</th>
+	<th>products</th>
+    <th>Customer</th>
+    <th>Dateordered</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orders.each do |order| %>
+  
+   <tr>
+    <% @products.each do |product| %> 
+    <% if product.id == order.product_id %>
+	<td> <%= link_to product.details , product %> </td>
+	<% end %>
+    <% end %>	
+	
+    
+    <td><%= order.product_id %></td>
+    <td><%= order.customer_id %></td>
+  	<td><%= order.dateOrdered.strftime("%d/%b/%y") %></td>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Edit', edit_order_path(order) %></td>
+    <td><%= link_to 'Destroy', order, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+<%= link_to 'New Order', new_order_path %>
+</table>
+
+
+<%= image_tag ("sonic.png") %>
+
+
+<br />
+
+

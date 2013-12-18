@@ -1,0 +1,40 @@
+<h1>Listing products</h1>
+<%= will_paginate @products%>
+
+<div id="search">
+	<%= render :partial => 'products/search' %>
+</div>
+
+
+<table>
+  <tr>
+    <th>Details</th>
+    <th>Age</th>
+    <th>Developer</th>
+    <th>Price</th>
+    <th>Trailer</th>
+    <th>Store</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.details %></td>
+    <td><%= product.age %></td>
+    <td><%= image_tag(product.developer, :size => '50x50') %></td>
+    <td><%= euro(product.price) %></td>
+    <td><%= product.trailer %></td>
+    <td><%= product.store_id %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+<%= link_to 'New Product', new_product_path %>
+</table>
+<%= image_tag ("video.jpg") %>
+<br />
+
+

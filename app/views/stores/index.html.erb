@@ -1,0 +1,27 @@
+<h1>Listing stores</h1>
+
+<table>
+  <tr>
+    <th>Address</th>
+    <th>County</th>
+    <th>Phonenumber</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stores.each do |store| %>
+  <tr>
+    <td><%= store.address %></td>
+    <td><%= store.county %></td>
+    <td><%= store.phoneNumber %></td>
+    <td><%= link_to 'Show', store %></td>
+    <td><%= link_to 'Edit', edit_store_path(store) %></td>
+    <td><%= link_to 'Destroy', store, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= image_tag ("video.jpg") %>
+<br />
+
+<%= link_to 'New Store', new_store_path %>

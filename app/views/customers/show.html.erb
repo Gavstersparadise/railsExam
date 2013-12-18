@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@customer.latitude}%2C#{@customer.longitude}" %>
+</p>
+
+<p>
+  <b>Emailaddress:</b>
+  <%= @customer.emailAddress %>
+</p>
+
+<p>
+  <b>Phonenumber:</b>
+  <%= @customer.phoneNumber %>
+</p>
+
+
+<h3>Nearby Shops</h3>
+<ul>
+<% @stores.each do |store| %> 
+ <li><%= link_to store.address, store %> (<%= store.distance.round(2) %> km)</li>
+<% end %>
+</ul>
+
+
+
+<p>
+	<% if !@customer.orders.empty? %>
+		<b>Orders By <%= @customer.name %> </b> <br \>
+		<% @customer.orders.each do |order| %>
+		<%= order.product.details %>	
+		
+			
+		<br \>
+	<% end %>
+		<% else %>
+		<b>NO ORDERS <%= image_tag ("sad.jpg") %>  Would You Like To <%= link_to 'Make an order ', new_order_path  %> </b>
+		<% end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
+

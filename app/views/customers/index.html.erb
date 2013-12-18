@@ -1,0 +1,33 @@
+<h1>Listing customers</h1>
+<%= will_paginate @customers%>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Emailaddress</th>
+    <th>Phonenumber</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @customers.each do |customer| %>
+  <tr>
+    <td><%= customer.name %></td>
+    <td><%= customer.address %></td>
+    <td><%= customer.emailAddress %></td>
+    <td><%= customer.phoneNumber %></td>
+    <td><%= link_to 'Show', customer %></td>
+    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+    <td><%= link_to 'Destroy', customer, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+<%= link_to 'New Customer', new_customer_path %>
+</table>
+
+<%= image_tag ("sonic.png") %>
+
+<br />
+
+

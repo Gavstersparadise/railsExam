@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Product:</b>
+      <% @products.each do |product| %> 
+    <% if product.id == @order.product_id %>
+	<td> <%= link_to product.details , product %> </td>
+
+	<% end %>
+    <% end %>	
+</p>
+
+<p>
+  <b>Product:</b>
+  <%= @order.product_id %>
+</p>
+<p>
+  <b>Customer:</b>
+  <%= @order.customer_id %>
+</p>
+
+<p>
+ <b>Customer:</b>
+  <% @customers.each do |customer| %> 
+  <% if customer.id == @order.customer_id %>
+	<td> <%= link_to customer.name , customer %> </td>
+	<% end %>
+    <% end %>	
+</p>
+
+<p>
+  <b>Date Ordered:</b>
+  <%= @order.dateOrdered %>
+</p>
+
+</P>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

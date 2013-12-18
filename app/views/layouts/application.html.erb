@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RubyAssignment</title>
+  <%= stylesheet_link_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css",  "application", :media => "all" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="banner">
+	<%= image_tag("yes.jpg") %>
+	<%= @page_title || "" %>
+	
+</div>
+<div id="nav">
+
+
+
+ <ul>
+
+	<% if !signed_in? %>
+		<li><%= link_to "Sign In", signin_path %></li>		
+	<% else %>
+		<li><B>Signed in as <%= @current_customer.emailAddress %><B></li>
+		<li><%= link_to "Sign Out", signout_path %></li>
+		
+    <%end%> 
+
+
+      
+      <li><%= link_to "ABOUT US", about_path%></li>
+      <li><%= link_to "RECENT GAME NEWS", 'http://IGN.COM' %></li>
+      <li><%= link_to "CURRENT PRODUCTS", products_path%></li>
+	  <li><%= link_to "STORES NEAR YOU ", stores_path%></li>
+	   <li><%= link_to "HOME", root_path%></li>
+	
+
+	 
+	  
+    </ul>
+	
+	
+	
+</div>
+
+
+<%= yield %>
+<p style="color: red"><%= flash[:error] %></p>
+
+<div id="footer"><B>Gavin Murphy 2013</B></div>
+
+</body>
+</html>
